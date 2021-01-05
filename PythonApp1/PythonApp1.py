@@ -2,27 +2,38 @@
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
+
 #https://www.stat.ee/pressiteade-2019-111
 #https://www.stat.ee/pressiteade-2019-104
 
 #Формирование данных и построение диаграммы
 x = np.arange(-8, 4, 0.5)  # x - массив np.array
-y1 = abs(x**2 + 4*x - 5)
+y1 = x**2 + 4*x - 5
 y2 = [9] * len(x)
 
 plt.subplots()
 plt.title("y = abs(x**2 + 4*x - 5)")
 plt.xlabel("Ось абсцисс")
 plt.ylabel("Ось ординат")
-
+plt.tick_params(axis="x", direction="in",length=25, width=5,color="red",labelsize=14, labelrotation=20)
+plt.grid(axis="x", color="green", alpha=.3, linewidth=5, linestyle=":")
+plt.xticks(np.arange(-8, 4, 1))
 plt.grid(True)# Отображение сетки на координатной плоскости
+
+
+
+
 plt.plot(x,y1 ,'--r',linewidth=5,label="Парабола")# График красного цвета
 plt.plot(x,y2,'-.g',marker="*",label="Прямая линия")
+
+
 plt.legend()
 plt.text(-7, 24.5, "На диаграмме 2 графика:\nпарабола и линия экстремума")
+
 plt.annotate(r"Экстремум функции = $\frac{-b}{2a} = \frac{-4}{2} = -2$",
                 xy=(-2, 9), xytext=(-5, 15),
                 arrowprops=dict(facecolor="black", shrink=0.05))
+
 plt.savefig("my_image.png")  # Сохранение изображения или
 plt.show()  # Вывод изображения на экран
 data = [
